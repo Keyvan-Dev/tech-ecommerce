@@ -27,6 +27,19 @@ const ProductCard = ({ product, loading }) => {
 						New
 					</Badge>
 				)}
+				<Text noOfLines={1} fontSize='xl' fontWeight='semibold' mt='2'>
+					{product.brand} {` `} {product.name}
+				</Text>
+				<Text noOfLines={1} fontSize='md' color='gray.600'>
+					{product.subtitle}
+				</Text>
+				<Flex justify='space-between' alignItems='center' mt='2'>
+					<Badge colorSchema='cyan'>{product.category}</Badge>
+					<Text fontSize='xl' fontWeight='semibold' color='cyan.600'>
+						${product.price}
+					</Text>
+				</Flex>
+				<IconButton icon={<BiExpand size='20'/>} colorSchema='cyan' size='sm'/>
 			</Box>
 		</Skeleton>
 	);

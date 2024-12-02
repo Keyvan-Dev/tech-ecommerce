@@ -1,12 +1,15 @@
 // Chakra UI
 import { ChakraProvider } from '@chakra-ui/react';
 
-function App() {
+// Screens
+import ProductsScreen from './screens/ProductsScreen';
+
+const App = () => {
 	return (
 		<div>
-			<ChakraProvider>Frontend</ChakraProvider>
+			<ChakraProvider><ProductsScreen /></ChakraProvider>
 		</div>
 	);
-}
+};
 
 export default App;
