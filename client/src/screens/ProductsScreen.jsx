@@ -8,7 +8,7 @@ import { Box, Wrap, WrapItem, Center } from '@chakra-ui/react';
 import axios from 'axios';
 
 // Components
-import ProductCard from '../components/productCard';
+import ProductCard from '../components/ProductCard';
 
 const ProductsScreen = () => {
 	const [data, setData] = useState([]);
