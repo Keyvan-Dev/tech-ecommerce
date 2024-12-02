@@ -14,7 +14,12 @@ const ProductCard = ({ product, loading }) => {
 				p='4'
 				shadow='md'
 			>
-				<Image />
+				<Image
+					src={product.Images[0]}
+					fallbackSrc='https://via.placeholder.com/150'
+					alt={product.name}
+					height='200px'
+				/>
 				{product.stock < 5 ? (
 					<Badge colorScheme='yellow'>only {product.stock} left</Badge>
 				) : product.stock < 1 ? (
@@ -39,7 +44,7 @@ const ProductCard = ({ product, loading }) => {
 						${product.price}
 					</Text>
 				</Flex>
-				<IconButton icon={<BiExpand size='20'/>} colorSchema='cyan' size='sm'/>
+				<IconButton icon={<BiExpand size='20' />} colorSchema='cyan' size='sm' />
 			</Box>
 		</Skeleton>
 	);
