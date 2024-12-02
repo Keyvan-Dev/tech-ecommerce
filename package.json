@@ -24,5 +24,9 @@
 		"mongoose": "^8.8.3",
 		"nodemailer": "^6.9.16",
 		"stripe": "^17.4.0"
+	},
+	"devDependencies": {
+		"@babel/plugin-transform-private-property-in-object": "^7.25.9",
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11"
 	}
 }

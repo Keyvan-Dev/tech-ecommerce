@@ -1,5 +1,5 @@
 // React
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 // Chakra UI
 import { Box, Wrap, WrapItem, Center } from '@chakra-ui/react';
@@ -7,29 +7,29 @@ import { Box, Wrap, WrapItem, Center } from '@chakra-ui/react';
 // Axios
 import axios from 'axios';
 
+// React Redux
+import { useSelector, useDispatch } from 'react-redux';
+
 // Components
-import ProductCard from '../components/ProductCard';
+import ProductCard from '../components/ProductCard.jsx';
+
+// Redux product actions
+import { getProducts } from '../redux/actions/productActions.js';
 
 const ProductsScreen = () => {
-	const [data, setData] = useState([]);
+	const dispatch = useDispatch();
+	const { loading, products, error, pagination } = useSelector((state) => state.product);
 
 	useEffect(() => {
-		axios
-			.get('/api/products')
-			.then((response) => {
-				setData(response.data.products);
-			})
-			.catch((error) => {
-				console.error('Error fetching data: ', error);
-			});
-	}, []);
-
+		dispatch(getProducts());
+	}, [dispatch]);
+	
 	return (
 		<>
-			{data.length > 1 && (
+			{products.length > 1 && (
 				<Box>
 					<Wrap spacing='30px' justify='center' minHeight='80vh' mx={{ base: '12', md: '20', lg: '32' }}>
-						{data.map((product) => (
+						{products.map((product) => (
 							<WrapItem key={product._id}>
 								<Center w='250px' h='450px'>
 									<ProductCard product={product} loading={false} />
