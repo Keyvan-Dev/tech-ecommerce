@@ -2,12 +2,12 @@
 import axios from 'axios';
 
 // Redux product slices
-import { setLoading, setProducts, setError, setPagination } from '../slices/product';
+import { setLoading, setProducts, setError, setPagination, setFavorites, setFavoritesToggle } from '../slices/product';
 
 export const getProducts = (page, favouriteToggle) => async (dispatch) => {
 	dispatch(setLoading());
 	try {
-		const { data } = await axios.get(`/api/products`);
+		const { data } = await axios.get(`/api/products/${page}/${10}`);
 		const { products, pagination } = data;
 		dispatch(setProducts(products));
 		dispatch(setPagination(pagination));

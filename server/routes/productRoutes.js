@@ -18,9 +18,9 @@ const getProducts = async (req, res) => {
 		const endIndex = startIndex + perPage;
 		const paginatedProducts = products.slice(startIndex, endIndex);
 
-		res.jason({ products: paginatedProducts, pagination: { currentPage: page, totalPages } });
+		res.json({ products: paginatedProducts, pagination: { currentPage: page, totalPages } });
 	} else {
-		res.jason({ products, pagination: {} });
+		res.json({ products, pagination: {} });
 	}
 };
 

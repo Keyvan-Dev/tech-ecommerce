@@ -18,7 +18,7 @@ const ProductsScreen = () => {
 	const { loading, error, products, pagination } = useSelector((state) => state.product);
 
 	useEffect(() => {
-		dispatch(getProducts());
+		dispatch(getProducts(1));
 	}, [dispatch]);
 
 	return (
