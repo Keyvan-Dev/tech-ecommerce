@@ -13,7 +13,7 @@ const getProducts = async (req, res) => {
 	const products = await Product.find({});
 
 	if (page && perPage) {
-		const totalPage = Math.ceil(products.length / perPage);
+		const totalPages = Math.ceil(products.length / perPage);
 		const startIndex = (page - 1) * perPage;
 		const endIndex = startIndex + perPage;
 		const paginatedProducts = products.slice(startIndex, endIndex);
