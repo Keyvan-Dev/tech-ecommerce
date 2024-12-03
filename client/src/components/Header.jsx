@@ -11,7 +11,7 @@ import { MdOutlineFavorite, MdOutlineFavoriteBorder } from 'react-icons/md';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Redux product action
-import { toggleFavorite } from '../redux/actions/productActions.js';
+import { toggleFavorites } from '../redux/actions/productActions.js';
 
 const Header = () => {
 	const dispatch = useDispatch();
@@ -21,13 +21,13 @@ const Header = () => {
 		<>
 			{favoriteToggled ? (
 				<IconButton
-					onClick={() => dispatch(toggleFavorite(false))}
+					onClick={() => dispatch(toggleFavorites(false))}
 					icon={<MdOutlineFavorite size='20px' />}
 					variant='ghost'
 				/>
 			) : (
 				<IconButton
-					onClick={() => dispatch(toggleFavorite(true))}
+					onClick={() => dispatch(toggleFavorites(true))}
 					icon={<MdOutlineFavoriteBorder size='20px' />}
 					variant='ghost'
 				/>

@@ -9,7 +9,7 @@ import { MdOutlineFavorite, MdOutlineFavoriteBorder } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Redux product action
-import { addToFavorites, removeFromFavoritesّ } from '../redux/actions/productActions.js';
+import { addToFavorites, removeFromFavorites } from '../redux/actions/productActions.js';
 
 const ProductCard = ({ product, loading }) => {
 	const dispatch = useDispatch();
@@ -60,7 +60,7 @@ const ProductCard = ({ product, loading }) => {
 							icon={<MdOutlineFavorite size='20px' />}
 							colorScheme='cyan'
 							size='sm'
-							onClick={() => dispatch(removeFromFavoritesّ(product._id))}
+							onClick={() => dispatch(removeFromFavorites(product._id))}
 						/>
 					) : (
 						<IconButton
