@@ -4,9 +4,6 @@ import { useEffect } from 'react';
 // Chakra UI
 import { Box, Wrap, WrapItem, Center } from '@chakra-ui/react';
 
-// Axios
-import axios from 'axios';
-
 // React Redux
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -18,7 +15,7 @@ import { getProducts } from '../redux/actions/productActions.js';
 
 const ProductsScreen = () => {
 	const dispatch = useDispatch();
-	const { loading, products, error, pagination } = useSelector((state) => state.product);
+	const { loading, error, products, pagination } = useSelector((state) => state.product);
 
 	useEffect(() => {
 		dispatch(getProducts());

@@ -4,6 +4,7 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
+		"start": "node server/index",
 		"server": "node server/index.js",
 		"client": "npm run start --prefix client",
 		"app": "concurrently npm \"npm run server\" \"npm run client\""

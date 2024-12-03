@@ -21,7 +21,7 @@ const ProductCard = ({ product, loading }) => {
 					height='200px'
 				/>
 				{product.stock < 5 ? (
-					<Badge colorScheme='yellow'>only {product.stock} left</Badge>
+					<Badge colorScheme='yellow'>Only {product.stock} left</Badge>
 				) : product.stock < 1 ? (
 					<Badge colorSchema='red'>Sold out</Badge>
 				) : (

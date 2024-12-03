@@ -2,13 +2,15 @@
 import { ChakraProvider } from '@chakra-ui/react';
 
 // Screens
-import ProductsScreen from './screens/ProductsScreen';
+import ProductsScreen from './screens/ProductsScreen.jsx';
 
 const App = () => {
 	return (
-		<div>
-			<ChakraProvider><ProductsScreen /></ChakraProvider>
-		</div>
+		<>
+			<ChakraProvider>
+				<ProductsScreen />
+			</ChakraProvider>
+		</>
 	);
 };
 
