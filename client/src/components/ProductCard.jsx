@@ -25,7 +25,7 @@ const ProductCard = ({ product, loading }) => {
 				shadow='md'
 			>
 				<Image
-					src={product.Images[0]}
+					src={product.images[0]}
 					fallbackSrc='https://via.placeholder.com/150'
 					alt={product.name}
 					height='200px'
@@ -33,11 +33,11 @@ const ProductCard = ({ product, loading }) => {
 				{product.stock < 5 ? (
 					<Badge colorScheme='yellow'>Only {product.stock} left</Badge>
 				) : product.stock < 1 ? (
-					<Badge colorSchema='red'>Sold out</Badge>
+					<Badge colorScheme='red'>Sold out</Badge>
 				) : (
-					<Badge colorScheme='green'>In stock</Badge>
+					<Badge colorScheme='green'>In Stock</Badge>
 				)}
-				{product.produtIsNew && (
+				{product.productIsNew && (
 					<Badge ml='2' colorScheme='purple'>
 						New
 					</Badge>
@@ -49,7 +49,7 @@ const ProductCard = ({ product, loading }) => {
 					{product.subtitle}
 				</Text>
 				<Flex justify='space-between' alignItems='center' mt='2'>
-					<Badge colorSchema='cyan'>{product.category}</Badge>
+					<Badge colorScheme='cyan'>{product.category}</Badge>
 					<Text fontSize='xl' fontWeight='semibold' color='cyan.600'>
 						${product.price}
 					</Text>
@@ -70,7 +70,8 @@ const ProductCard = ({ product, loading }) => {
 							onClick={() => dispatch(addToFavorites(product._id))}
 						/>
 					)}
-					<IconButton icon={<BiExpand size='20' />} colorSchema='cyan' size='sm' />
+
+					<IconButton icon={<BiExpand size='20' />} colorScheme='cyan' size='sm' />
 				</Flex>
 			</Box>
 		</Skeleton>

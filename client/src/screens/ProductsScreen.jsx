@@ -16,7 +16,7 @@ import { getProducts } from '../redux/actions/productActions.js';
 
 const ProductsScreen = () => {
 	const dispatch = useDispatch();
-	const { loading, error, products, pagination, favoriteToggled } = useSelector((state) => state.product);
+	const { loading, error, products, pagination, favoritesToggled } = useSelector((state) => state.product);
 
 	useEffect(() => {
 		dispatch(getProducts(1));
@@ -39,12 +39,12 @@ const ProductsScreen = () => {
 							</WrapItem>
 						))}
 					</Wrap>
-					{!favoriteToggled && (
+					{!favoritesToggled && (
 						<Wrap spacing='10px' justify='center' p='5'>
 							<Button colorScheme='cyan' onClick={() => paginationButtonClick(1)}>
 								<ArrowLeftIcon />
 							</Button>
-							{Array.from(Array(pagination.totalPags), (e, i) => {
+							{Array.from(Array(pagination.totalPages), (e, i) => {
 								return (
 									<Button
 										colorScheme={pagination.currentPage === i + 1 ? 'cyan' : 'gray'}
@@ -55,7 +55,7 @@ const ProductsScreen = () => {
 									</Button>
 								);
 							})}
-							<Button colorScheme='cyan' onClick={() => paginationButtonClick(pagination.totalPags)}>
+							<Button colorScheme='cyan' onClick={() => paginationButtonClick(pagination.totalPages)}>
 								<ArrowRightIcon />
 							</Button>
 						</Wrap>
