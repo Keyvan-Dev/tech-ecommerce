@@ -2,7 +2,15 @@
 import axios from 'axios';
 
 // Redux product slices
-import { setLoading, setProducts, setError, setPagination, setFavorites, setFavoritesToggle } from '../slices/product';
+import {
+	setLoading,
+	setProducts,
+	setProduct,
+	setError,
+	setPagination,
+	setFavorites,
+	setFavoritesToggle,
+} from '../slices/product';
 
 export const getProducts = (page, favouriteToggle) => async (dispatch) => {
 	dispatch(setLoading());
@@ -56,5 +64,23 @@ export const toggleFavorites = (toggle) => async (dispatch, getState) => {
 	} else {
 		dispatch(setFavoritesToggle(false));
 		dispatch(getProducts(1));
+	}
+};
+
+export const getProduct = (id) => async (dispatch) => {
+	dispatch(setLoading(true));
+	try {
+		const { data } = await axios.get(`/api/products/${id}`);
+		dispatch(setProduct(data));
+	} catch (error) {
+		dispatch(
+			setError(
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message
+					? error.message
+					: 'An expected error has occured. Please try again later.'
+			)
+		);
 	}
 };
