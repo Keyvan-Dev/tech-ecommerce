@@ -1,7 +1,18 @@
 // Mongoose
-import mongooes from 'mongoose';
+import mongoose from 'mongoose';
 
-const productSchema = new mongooes.Schema(
+const reviewSchema = new mongoose.Schema(
+	{
+		name: { type: String, required: true },
+		rating: { type: Number, required: true },
+		comment: { type: String, required: true },
+		title: { type: String, required: true },
+		user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
+	},
+	{ timestamps: true }
+);
+
+const productSchema = new mongoose.Schema(
 	{
 		name: {
 			type: String,
@@ -20,11 +31,7 @@ const productSchema = new mongooes.Schema(
 			type: String,
 			required: true,
 		},
-		reviews: {
-			type: Array,
-			required: true,
-			default: [],
-		},
+		reviews: [reviewSchema],
 		rating: {
 			type: Number,
 			required: true,
@@ -53,6 +60,6 @@ const productSchema = new mongooes.Schema(
 	{ timestamps: true }
 );
 
-const Product = mongooes.model('Product', productSchema);
+const Product = mongoose.model('Product', productSchema);
 
 export default Product;
