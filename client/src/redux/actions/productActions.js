@@ -10,7 +10,7 @@ import {
 	setPagination,
 	setFavorites,
 	setFavoritesToggle,
-} from '../slices/product';
+} from '../slices/product.js';
 
 export const getProducts = (page, favouriteToggle) => async (dispatch) => {
 	dispatch(setLoading());

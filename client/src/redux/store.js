@@ -1,11 +1,13 @@
 // Redux Toolkit
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-// Redux product slices
+// Redux slices
 import product from './slices/product.js';
+import cart from './slices/cart.js';
 
 const reducer = combineReducers({
 	product,
+	cart,
 });
 
 export default configureStore({ reducer });
