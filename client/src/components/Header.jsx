@@ -19,6 +19,7 @@ import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
 import { MdOutlineFavorite, MdOutlineFavoriteBorder } from 'react-icons/md';
 import { BsPhoneFlip } from 'react-icons/bs';
 import { BiUserCheck } from 'react-icons/bi';
+import { TbShoppingCart } from 'react-icons/tb';
 
 // React Redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -44,6 +45,7 @@ const Header = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const dispatch = useDispatch();
 	const { favoritesToggled } = useSelector((state) => state.product);
+	const { cartItems } = useSelector((state) => state.cart);
 
 	useEffect(() => {}, [favoritesToggled, dispatch]);
 
@@ -57,6 +59,19 @@ const Header = () => {
 						icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
 						onClick={isOpen ? onClose : onOpen}
 					/>
+					<IconButton
+						icon={<TbShoppingCart size='20px' />}
+						ml='12'
+						position='absolute'
+						as={ReactLink}
+						to='/cart'
+						varient='ghost'
+					/>
+					{cartItems.length > 0 && (
+						<Text fontSize='sm' fontWeight='bold' fontStyle='italic' position='absolute' ml='74px' mt='-6'>
+							{cartItems.length}
+						</Text>
+					)}
 				</Flex>
 				<HStack spacing='8' alignItems='center'>
 					<Box alignItems='center' display='flex' as={ReactLink} to='/'>
@@ -69,6 +84,19 @@ const Header = () => {
 								<Text fontWeight='medium'>{link.name}</Text>
 							</NavLink>
 						))}
+						<Box>
+							<IconButton
+								icon={<TbShoppingCart size='20px' />}
+								as={ReactLink}
+								to='/cart'
+								varient='ghost'
+							/>
+							{cartItems.length > 0 && (
+								<Text fontSize='sm' fontWeight='bold' fontStyle='italic' position='absolute' ml='26px' mt='-6'>
+									{cartItems.length}
+								</Text>
+							)}
+						</Box>
 						<ColorModeToggle />
 						{favoritesToggled ? (
 							<IconButton
@@ -103,7 +131,8 @@ const Header = () => {
 							<IconButton
 								onClick={() => dispatch(toggleFavorites(false))}
 								icon={<MdOutlineFavorite size='20px' />}
-								variant='ghost'
+								varian
+								t='ghost'
 							/>
 						) : (
 							<IconButton
